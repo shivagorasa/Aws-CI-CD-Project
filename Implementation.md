@@ -35,7 +35,8 @@ To implement the task above we can setup continuous integration with aws codepip
  * Used cli for uploading source code to codecommit repo 
 
 
-![!\[alt text\](image.png)](codecommit.png)
+![image](https://github.com/shivagorasa/Aws-CI-CD-Project/assets/97184376/0d3f561b-5ce0-42c2-b473-ccdcef6a71dc)
+
 
 ## Create CodeBuild Project:
 
@@ -81,13 +82,16 @@ phases:
  ```
  ### CodebuildProject output
 
-![!\[alt text\](image.png)](codebuild.png)
+![image](https://github.com/shivagorasa/Aws-CI-CD-Project/assets/97184376/29e1244f-4119-4806-879e-7bcaa531fe4b)
+
 
 ## If we click on start build , a docker image is pushed to our docker hub registry with username/my-docker-image:latest
 
-![!\[alt text\](image.png)](codebuild-log.png)
+![image](https://github.com/shivagorasa/Aws-CI-CD-Project/assets/97184376/892e4db9-4f63-4a8c-bff3-a91e6771dfd8)
 
-![!\[alt text\](image.png)](dockerhub-repo.png)
+
+![image](https://github.com/shivagorasa/Aws-CI-CD-Project/assets/97184376/2731bc86-f50b-4c8f-b39c-46bf2b555897)
+
 
 ## Continuous Deployment with Elastic Beanstalk:
 
@@ -130,22 +134,25 @@ Select single instance , use default under monitoring and create application
 
 We get default docker application running on elastic bean stalk
 
-![!\[alt text\](image.png)](<sample docker.png>)
+![image](https://github.com/shivagorasa/Aws-CI-CD-Project/assets/97184376/fd0bd936-1b83-4896-b19d-5875c9c0f941)
+
 
 
 **Later on elastic beanstalk upload source code as a zip file with buildspec.yml and Dockerrun.aws.json in the sourcecode directory** 
 
 Using above create a Elastic Beanstalk TO DEPLOY OUR APPLICATION , IF SUCCESSFUL WE GET FOLLOWING UNDER LOGS: 
 
-![!\[alt text\](image.png)](ebs-env-logs.png)
+![image](https://github.com/shivagorasa/Aws-CI-CD-Project/assets/97184376/be4717cf-f040-4119-86a7-7e2d534bb8af)
+
 
 Instance created by Elastic beanstalk
+![image](https://github.com/shivagorasa/Aws-CI-CD-Project/assets/97184376/ad582e8b-d4b1-4c43-86e8-c10ebabd6da2)
 
-![!\[alt text\](image.png)](<ec2 instance.png>)
 
 WE CAN ACCESS OUR APP RUNNING USING DOMAIN UNDER Elastic beanstalk 
 
-![!\[alt text\](image.png)](ebs-output.png)
+![image](https://github.com/shivagorasa/Aws-CI-CD-Project/assets/97184376/f958f269-acfa-4944-bb9e-ac3cbec193ae)
+
 
 ## Set up CodePipeline:
 
@@ -158,11 +165,13 @@ WE CAN ACCESS OUR APP RUNNING USING DOMAIN UNDER Elastic beanstalk
 
 In Code pipeline Select source as code commit, artifacts like source code is sent to aws s3 bucket, for build process select build as code build, and finally for code deploy use aws elastic beanstalk with required IAM role and policies, if everything works well, we get following 
 
-![!\[alt text\](image.png)](codepipeline.png)
+![image](https://github.com/shivagorasa/Aws-CI-CD-Project/assets/97184376/2ae262a1-5359-4c03-bfea-f10b9bc70dca)
+
 
 And similarly, we use domain on elastic beanstalk to access our application running on aws 
 
-![!\[alt text\](image.png)](pipeline-output.png)
+![image](https://github.com/shivagorasa/Aws-CI-CD-Project/assets/97184376/98dfa937-f062-411a-8840-a3695cc56dca)
+
 
 Conclusion: Hence with proper rules and policies attached to our pipeline we will be able to achieve successful code pipeline build with AWS 
 
