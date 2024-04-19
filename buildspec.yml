@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      docker: 18
+
+  pre_build:
+    commands:
+      - echo Logging in to Docker Hub...
+      - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+
+  build:
+    commands:
+      - echo Building Docker image...
+      - docker build -t my-docker-image .
+      - docker tag my-docker-image $DOCKER_USERNAME/my-docker-image
+
+  post_build:
+    commands:
+      - echo Pushing Docker image to Docker Hub...
+      - docker push $DOCKER_USERNAME/my-docker-image
+
